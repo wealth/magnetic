@@ -10,6 +10,20 @@
 
 using namespace std;
 
+bool dumpData(string filename, int n, double *mn, double *mxyz, double *dm, double *hxyz)
+{
+	filebuf fb;
+	fb.open (filename.c_str(), ios::out);
+	ostream os(&fb);
+	cout << "Dumping data to file " << filename << endl;
+	for (int i = 0; i < n * 3; i += 3)
+		os << mn[i] << " " << mn[i+1] << " " << mn[i+2] <<
+		 " " << mxyz[i] << " " << mxyz[i+1] << " " << mxyz[i+2] <<
+		 " " << hxyz[i] << " " << hxyz[i+1] << " " << hxyz[i+2] <<
+		 " " << dm[i/3] << endl;
+	fb.close();
+}
+
 void gener(float c,int sp,int sp1,int n, int N, double *mn, double *modl, double *cxyz,double *mxyz,double *vol,double *hc,double *hxyz,double *dm)
 {
 	vector <double> f;
@@ -206,6 +220,8 @@ void gener(float c,int sp,int sp1,int n, int N, double *mn, double *modl, double
 		mn[i+2]=mn[i+2]*lObr;
 	}
 
+	//dumpData("linear.txt", n, mn, mxyz, dm, hxyz);
+
 	//zamenim peresekayuschiesya i blizkie chasticy
 	int	a=0,  np=0, np1=0, it=0, itr=0;
     double  rmin=0, rx=0, ry=0, rz=0, r1=0; //chislo chastic do otbrasivania
@@ -242,13 +258,15 @@ void gener(float c,int sp,int sp1,int n, int N, double *mn, double *modl, double
     	vol[i]=(4./3.)*3.141*(dm[i]/2.)*(dm[i]/2.)*(dm[i]/2.);
     	vob+= vol[i];
     }
+
 	//ob'em i rasmery obrazca
     lObr = exp((1./3.)*log(vob/c));
     lObr = int(lObr + .5);
-	//cout<<"\n lineiny rasmer obrazca="<<lObr<<"ob'em of sample "<< lObr*lObr*lObr<<endl;
-	//cout<<"\n ob'em obrazca="<<vob<<endl;
-	//cout<<"\n consentration="<<vob/lObr/lObr/lObr<<endl;
-	//cout<<"\n Vse "<<np1<<" slipshiesya chasticy razneseny"<<endl<<endl;
+	
+	cout << "\nlinear size of sample = " << lObr << "\nvolume of sample " << lObr*lObr*lObr << endl;
+	cout << "volume of particles = " << vob << endl;
+	cout << "concentration = " << vob/lObr/lObr/lObr << endl;
+	cout << "All " << np1 << " intersected particles separated" << endl;
 
 
 	//podchitaem momenty
@@ -265,17 +283,22 @@ void gener(float c,int sp,int sp1,int n, int N, double *mn, double *modl, double
 	//double Hx=0.5/sqrt(2.), Hy=0., Hz=-0.5/sqrt(2.), m0;
 	cout<<"field of sidimentation Hsx="<<Hx<<"  Hsy="<<Hy<<"  Hsz="<<Hz<<endl;
 
-
+	// set fields and scale to centimeters
 	for( int i=0; i<N; i+=3)
 	{
-		hxyz[i]=Hx;    
-		hxyz[i+1]=Hy;
-		hxyz[i+2]=Hz;
+		hxyz[i] = Hx;
+		hxyz[i+1] = Hy;
+		hxyz[i+2] = Hz;
 
-		mn[i]*=kl;
-		mn[i+1]*=kl;
-		mn[i+2]*=kl;
+		mn[i] *= kl;
+		mn[i+1] *= kl;
+		mn[i+2] *= kl;
+
+		dm[i/3] *= kl;
 	}
+
+	//dumpData("multiplied.txt", n, mn, mxyz, dm, hxyz);
+
 	vector<double> ranjZ;
 	vector<int> vspmZ;
 	int nmaxf=-1, id=0, f1=0, prov=0;
@@ -412,20 +435,6 @@ void gener(float c,int sp,int sp1,int n, int N, double *mn, double *modl, double
 	}
 }
 
-bool dumpData(string filename, int n, double *mn, double *mxyz, double *dm, double *hxyz)
-{
-	filebuf fb;
-	fb.open (filename.c_str(), ios::out);
-	ostream os(&fb);
-	cout << "Dumping data to file " << filename << endl;
-	for (int i = 0; i < n * 3; i += 3)
-		os << mn[i] << " " << mn[i+1] << " " << mn[i+2] <<
-		 " " << mxyz[i] << " " << mxyz[i+1] << " " << mxyz[i+2] <<
-		 " " << hxyz[i] << " " << hxyz[i+1] << " " << hxyz[i+2] <<
-		 " " << dm[i/3] << endl;
-	fb.close();
-}
-
 int main (int argc, char* argv[])
 {
 	int rank, size;
@@ -435,9 +444,9 @@ int main (int argc, char* argv[])
 	MPI_Comm_rank (MPI_COMM_WORLD, &rank);
 	MPI_Comm_size (MPI_COMM_WORLD, &size);
 
-	int n=10000;				//Kolichestvo chastic
+	int n = 10000;				//Kolichestvo chastic
 	if (rank==0)
-		cout<<" number of particles n="<<n<<endl;
+		cout << "number of particles: n = " << n << endl;
 	int state=1;				//Initial state 1-NS, 2 - Orient, 3- ori X, 4-ori2 z, 5 - ori2
 	int sp=1;					//Spectr criticheskyh poley  1- Gauss, 2- Ravnomerny
 	int sp1=3;					//Raspredelenie ob'emov 1- Gauss, 2- Ravnomerny, 3 - Lognormalny
@@ -488,7 +497,7 @@ int main (int argc, char* argv[])
 
 	// dump mn and mxyz to file
 	if (rank == 0)
-		dumpData("before.txt", n, mn, mxyz, dm, hxyz);
+		dumpData("initial.txt", n, mn, mxyz, dm, hxyz);
 
 	int step, znak=-1, zz=0;//peremennie neobhodimie dlya izmeneniya polya
 	double vich;
@@ -651,7 +660,7 @@ int main (int argc, char* argv[])
 
 					ostringstream filename;
 					filename << "after-" << zz << ".txt";
-					dumpData(filename.str(), n, mn, mxyz, dm, hxyz);
+					//dumpData(filename.str(), n, mn, mxyz, dm, hxyz);
 				}
 			}
 		}while(nnc!=0);
@@ -673,6 +682,8 @@ int main (int argc, char* argv[])
 		znak*=-1;
 		zz++;
 	}while(fabs(Hx)>0.1);
+	if (rank == 0)
+		dumpData("final.txt", n, mn, mxyz, dm, hxyz);
 	MPI_Barrier(MPI_COMM_WORLD);//Sinhroniziruemsya
 	MPI_Finalize();
 	return 0;

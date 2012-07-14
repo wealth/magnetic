@@ -4,4 +4,7 @@
 ### sftp -r backuper@10.1.2.3:/BACKUP/*  /backup/current/
 
 ### аплоад через SSH (c локальной машины на 10.1.2.3)
-scp /home/zlo/Desktop/* backuper@10.1.2.3:/backup/zlo/
+scp magnetic.cpp lyubimov@cluster.dvfu.ru:~/magnetic/
+ssh lyubimov@cluster.dvfu.ru "cd ~/magnetic/; mpic++ -o magnetic.o  magnetic.cpp; mpiexec -np 4 ./magnetic.o"
+sftp -r lyubimov@cluster.dvfu.ru:~/magnetic/initial.txt  ./data/
+sftp -r lyubimov@cluster.dvfu.ru:~/magnetic/final.txt  ./data/
