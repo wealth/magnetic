@@ -10,7 +10,7 @@
 
 using namespace std;
 
-bool dumpData(string filename, int n, double *mn, double *mxyz, double *dm, double *hxyz)
+bool dumpData(string filename, int n, double *mn, double *mxyz, double *dm, double *hxyz, double *hc)
 {
 	filebuf fb;
 	fb.open (filename.c_str(), ios::out);
@@ -20,7 +20,7 @@ bool dumpData(string filename, int n, double *mn, double *mxyz, double *dm, doub
 		os << mn[i] << " " << mn[i+1] << " " << mn[i+2] <<
 		 " " << mxyz[i] << " " << mxyz[i+1] << " " << mxyz[i+2] <<
 		 " " << hxyz[i] << " " << hxyz[i+1] << " " << hxyz[i+2] <<
-		 " " << dm[i/3] << endl;
+		 " " << dm[i/3] << " " << hc[i/3] << endl;
 	fb.close();
 }
 
@@ -263,7 +263,7 @@ void gener(float c,int sp,int sp1,int n, int N, double *mn, double *modl, double
     lObr = exp((1./3.)*log(vob/c));
     lObr = int(lObr + .5);
 	
-	cout << "\nlinear size of sample = " << lObr << "\nvolume of sample " << lObr*lObr*lObr << endl;
+	cout << "linear size of sample = " << lObr << "\nvolume of sample " << lObr*lObr*lObr << endl;
 	cout << "volume of particles = " << vob << endl;
 	cout << "concentration = " << vob/lObr/lObr/lObr << endl;
 	cout << "All " << np1 << " intersected particles separated" << endl;
@@ -497,7 +497,7 @@ int main (int argc, char* argv[])
 
 	// dump mn and mxyz to file
 	if (rank == 0)
-		dumpData("initial.txt", n, mn, mxyz, dm, hxyz);
+		dumpData("initial.txt", n, mn, mxyz, dm, hxyz, hc);
 
 	int step, znak=-1, zz=0;//peremennie neobhodimie dlya izmeneniya polya
 	double vich;
@@ -660,7 +660,7 @@ int main (int argc, char* argv[])
 
 					ostringstream filename;
 					filename << "after-" << zz << ".txt";
-					//dumpData(filename.str(), n, mn, mxyz, dm, hxyz);
+					dumpData(filename.str(), n, mn, mxyz, dm, hxyz, hc);
 				}
 			}
 		}while(nnc!=0);
@@ -682,8 +682,11 @@ int main (int argc, char* argv[])
 		znak*=-1;
 		zz++;
 	}while(fabs(Hx)>0.1);
-	if (rank == 0)
-		dumpData("final.txt", n, mn, mxyz, dm, hxyz);
+	if (rank == 0) {
+		ostringstream filename;
+		filename << "final" << ".txt";
+		dumpData(filename.str(), n, mn, mxyz, dm, hxyz, hc);
+	}
 	MPI_Barrier(MPI_COMM_WORLD);//Sinhroniziruemsya
 	MPI_Finalize();
 	return 0;
