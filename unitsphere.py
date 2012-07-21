@@ -5,14 +5,11 @@ import os, time, sys
 
 fig1 = plt.figure(1, figsize=(7,7))
 fig2 = plt.figure(2)
-##fig3 = plt.figure(3)
-##fig3.suptitle("Y-Z Projection")
 
 ax1 = fig1.add_subplot(111, projection='3d')
 ax2 = fig2.add_subplot(111)
-##ax3 = fig3.add_subplot(111)
 
-stage = sys.argv[1] if len(sys.argv) > 2 else 'initial'
+stage = sys.argv[1] if len(sys.argv) > 1 else 'initial'
 
 data = open('data/' + stage + '.txt', 'r')
 
@@ -63,8 +60,8 @@ for i in range(len(top_xs)):
 
 ax1.scatter(top_us, right_vs, left_ws, s = 0.01)
 fig1.suptitle("Magnetic Moments: " + stage)
-fig1.savefig('images/magnetic-moments-unitsphere-' + stage + '.png')
+fig1.savefig('images/magnetic-moments-unitsphere-' + stage + '.pdf')
 
 ax2.scatter(us, vs, s = 0.01)
 fig2.suptitle("Magnetic Moments UV Map: " + stage)
-fig2.savefig('images/magnetic-moments-uvmap-' + stage + '.png')
+fig2.savefig('images/magnetic-moments-uvmap-' + stage + '.pdf')

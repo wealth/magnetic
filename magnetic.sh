@@ -5,4 +5,4 @@ ssh lyubimov@cluster.dvfu.ru "cd ~/magnetic/; mpic++ -o magnetic.o  magnetic.cpp
 sftp -r lyubimov@cluster.dvfu.ru:magnetic/initial.txt  ./data/
 sftp -r lyubimov@cluster.dvfu.ru:magnetic/final.txt  ./data/
 
-./generate.sh
+# ./generate.sh

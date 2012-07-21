@@ -39,6 +39,6 @@ count = 1
 while count < 360:
     q.scene.camera.azimuth(1)
     mlab.draw()
-    mlab.savefig('images/animate/' + stage + '-dms-animated-' + str(count).zfill(3) + '.png')
+    mlab.savefig('animate/' + stage + '-dms-animated-' + str(count).zfill(3) + '.png')
     count += 1
     print(count)

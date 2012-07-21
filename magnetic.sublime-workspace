@@ -1,0 +1,391 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"line",
+				"line_square"
+			],
+			[
+				"top",
+				"top_us"
+			],
+			[
+				"left",
+				"left_zs"
+			],
+			[
+				"right",
+				"right_ys"
+			],
+			[
+				"bin",
+				"bincenters"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "histograms.py",
+			"settings":
+			{
+				"buffer_size": 1927,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "histograms.sh",
+			"settings":
+			{
+				"buffer_size": 366,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "diameters.py",
+			"settings":
+			{
+				"buffer_size": 1078,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "diameters-scatter.py",
+			"settings":
+			{
+				"buffer_size": 1102,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "black-field.py",
+			"settings":
+			{
+				"buffer_size": 1915,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "animate.sh",
+			"settings":
+			{
+				"buffer_size": 237,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/demi/Public/magnetic/generate.sh",
+		"/home/demi/Public/magnetic/unitsphere.py",
+		"/home/demi/Public/magnetic/histograms.sh",
+		"/home/demi/Public/magnetic/histograms.py",
+		"/home/demi/Public/magnetic/magnetic.cpp",
+		"/home/demi/Public/magnetic/diameters.py",
+		"/home/demi/Public/magnetic/field.py",
+		"/home/demi/Public/magnetic/black-field.py",
+		"/home/demi/Public/magnetic/magnetic.sh",
+		"/home/demi/Public/magnetic/animate.sh",
+		"/home/demi/Public/mplv.py",
+		"/home/demi/Public/magnetic/.gitignore",
+		"/home/demi/Public/magnetic/data/initial.txt",
+		"/home/demi/Public/magnetic/data/final.txt",
+		"/home/demi/Public/magnetic_field.py",
+		"/home/demi/Public/trial.py",
+		"/home/demi/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/demi/.config/sublime-text-2/Packages/User/Distraction Free.sublime-settings",
+		"/home/demi/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"dumpdata",
+			"n, mn, mxyz, dm,",
+			"final",
+			"cxyz"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "histograms.py",
+					"settings":
+					{
+						"buffer_size": 1927,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								771,
+								771
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "histograms.sh",
+					"settings":
+					{
+						"buffer_size": 366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								175,
+								175
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "diameters.py",
+					"settings":
+					{
+						"buffer_size": 1078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1077,
+								884
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "diameters-scatter.py",
+					"settings":
+					{
+						"buffer_size": 1102,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								861,
+								861
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 495.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "black-field.py",
+					"settings":
+					{
+						"buffer_size": 1915,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								283,
+								253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "animate.sh",
+					"settings":
+					{
+						"buffer_size": 237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								237,
+								237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

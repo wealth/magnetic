@@ -16,7 +16,7 @@ from enthought.mayavi import mlab
 ##ax2 = fig2.add_subplot(111)
 ##ax3 = fig3.add_subplot(111)
 
-stage = sys.argv[1] if len(sys.argv) > 2 else 'initial'
+stage = sys.argv[1] if len(sys.argv) > 1 else 'initial'
 
 data = open('data/' + stage + '.txt', 'r')
 
@@ -70,7 +70,7 @@ for line in data:
 ##
 
 # 3d vector field
-# mlab.options.offscreen = True
+mlab.options.offscreen = True
 mlab.figure(1, bgcolor=(1, 1, 1), size=(1280, 720))
 q = mlab.quiver3d(top_xs, right_ys, left_zs, top_us, right_vs, left_ws, scale_mode='none')
 mlab.orientation_axes()
@@ -79,5 +79,4 @@ a = mlab.axes(color=(0.1,0.1,0.1), nb_labels=3, line_width=1.0)
 a.axes.axis_label_text_property.color = (0,0,0)
 q.scene.isometric_view()
 
-# mlab.savefig('images/field-' + stage + '.png')
-mlab.show()
+mlab.savefig('images/field-' + stage + '.png')
